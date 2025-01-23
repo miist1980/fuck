@@ -1,1 +1,57 @@
+<h2>chromakopia</h2>
+<p>tracklist:<br>
+01 - st. chroma<br>
+02 - rah tah tah<br>
+03 - noid<br>
+04 - darling, i<br>
+05 - hey jane<br>
+06 - i killed you<br>
+07 - judge judy<br>
+08 - sticky<br>
+09 - take your mask off<br>
+10 - tomorrow<br>
+11 - thought i was dead<br>
+12 - like him<br>
+13 - balloon<br>
+14 - i hope you find your way home<br>
+15 - mother</p>
 
+<div id="playlist">
+  <audio controls src="/chromakopia/stchroma.mp3"></audio><br>
+  <audio controls src="/chromakopia/rahtahtah.mp3"></audio><br>
+  <audio controls src="/chromakopia/noid.mp3"></audio><br>
+  <audio controls src="/chromakopia/darlingi.mp3"></audio><br>
+  <audio controls src="/chromakopia/heyjane.mp3"></audio><br>
+  <audio controls src="/chromakopia/ikilledyou.mp3"></audio><br>
+  <audio controls src="/chromakopia/judgejudy.mp3"></audio><br>
+  <audio controls src="/chromakopia/sticky.mp3"></audio><br>
+  <audio controls src="/chromakopia/takeyourmaskoff.mp3"></audio><br>
+  <audio controls src="/chromakopia/tomorrow.mp3"></audio><br>
+  <audio controls src="/chromakopia/thoughtiwasdead.mp3"></audio><br>
+  <audio controls src="/chromakopia/likehim.mp3"></audio><br>
+  <audio controls src="/chromakopia/balloon.mp3"></audio><br>
+  <audio controls src="/chromakopia/ihopeyoufindyourwayhome.mp3"></audio><br>
+  <audio controls src="/chromakopia/mother.mp3"></audio><br>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const audios = document.querySelectorAll("#playlist audio");
+    let current = 0;
+
+    const playNext = () => {
+      if (current < audios.length) {
+        audios[current].play();
+        audios[current].addEventListener("ended", () => {
+          current++;
+          playNext();
+        }, { once: true });
+      }
+    };
+
+    // Start the playlist automatically
+    if (audios.length > 0) {
+      playNext();
+    }
+  });
+</script>
